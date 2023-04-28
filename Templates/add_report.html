@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style%}
+
+{% endblock style%}
+
+{% block content %}
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-4">
+  <h1 class="h3"></h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="dropdown-center mx-5 fs-4 row">
+      <div class="col">
+        <span class="fs-6">{{ user.get_username }}</span>
+      </div>
+      <div class="col">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="{{ user.userprofile.image.url }}" alt="avatar" class="rounded-circle img-fluid" width="32px"
+            height="32px">
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li><a class="dropdown-item" href="">User Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="{% url 'logout_page' %}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-5 pt-5 pb-5 bg-body-tertiary rounded-3 text-white">
+  <div class="mb-4 text-center">
+    <h3>Add User Report</h3>
+  </div>
+
+  <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="row justify-content-center mb-3">
+
+      <div class="col-sm-4 fs-5 mt-2">
+        <span class="fw-bold">Name:</span> {{ user.first_name }} {{ user.last_name}}
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-floating">
+          <input type="number" step="any" class="form-control" name="age" id="age" placeholder="Password">
+          <label for="age">Age</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center mb-3">
+
+      <div class="col-sm-3">
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect" name="sex">
+            <option selected value="1">Male</option>
+            <option value="0">Female</option>
+          </select>
+          <label for="floatingSelect">Gender</label>
+        </div>
+      </div>
+
+      <div class="col-sm-5 form-group mt-3 fs-5">
+        <label for="sick">Do you feel Sick?</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="sick" id="sick-yes" value="1">
+          <label class="form-check-label" for="sick-yes">Yes</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="sick" id="sick-no" value="1">
+          <label class="form-check-label" for="sick-no">No</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-sm-3">
+        <div class="form-floating">
+          <input type="number" class="form-control" name="t3" id="t3" placeholder="Password">
+          <label for="t3">T3</label>
+        </div>
+      </div>
+
+      <div class="col-sm-5 form-group mt-3 fs-5">
+        <div class="form-group">
+          <label for="pregnant">Are you Pregnant?</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="pregnant" id="pregnant-yes" value="1">
+            <label class="form-check-label" for="pregnant-yes">Yes</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="pregnant" id="pregnant-no" value="0">
+            <label class="form-check-label" for="pregnant-no">No</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-sm-3">
+        <div class="form-floating">
+          <input type="number" step="any" step="any" class="form-control" name="tt4" id="tt4" placeholder="Password">
+          <label for="tt4">TT4</label>
+        </div>
+      </div>
+
+      <div class="col-sm-5 form-group mt-3 fs-5">
+        <div class="form-group">
+          <label for="thyroid-surgery">Have you had Thyroid Surgery?</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="thyroid_surgery" id="thyroid-surgery-yes" value="1">
+            <label class="form-check-label" for="thyroid-surgery-yes">Yes</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="thyroid_surgery" id="thyroid-surgery-no" value="0">
+            <label class="form-check-label" for="thyroid-surgery-no">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-sm-3">
+        <div class="form-floating">
+          <input type="number" step="any" class="form-control" name="t4u" id="t4u" placeholder="Password">
+          <label for="t4u">T4U</label>
+        </div>
+      </div>
+
+      <div class="col-sm-5 form-group mt-3 fs-5">
+        <div class="form-group">
+          <label for="goitre">Do you have Goitre?</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="goitre" id="goitre-yes" value="1">
+            <label class="form-check-label" for="goitre-yes">Yes</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="goitre" id="goitre-no" value="0">
+            <label class="form-check-label" for="goitre-no">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-sm-3">
+        <div class="form-floating">
+          <input type="number" step="any" class="form-control" name="fti" id="fti" placeholder="Password">
+          <label for="fti">FTI</label>
+        </div>
+      </div>
+
+      <div class="col-sm-5 form-group mt-3 fs-5">
+        <div class="form-group">
+          <label for="tumor">Do you have Tumor?</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tumor" id="tumor-yes" value="1">
+            <label class="form-check-label" for="tumor-yes">Yes</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tumor" id="tumor-no" value="0">
+            <label class="form-check-label" for="tumor-no">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="mt-4 text-center">
+      <button type=" submit" class="btn btn-info">Submit</button>
+    </div>
+
+  </form>
+
+</div>
+
+
+{% endblock content%}

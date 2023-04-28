@@ -1,18 +1,353 @@
-<!doctype html>
+{% load static %}
 <html lang="en" data-bs-theme="dark">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ThyroSense</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <style>
+    .example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, .1), inset 0 0.125em 0.5em rgba(0, 0, 0, .15);
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .marketing .col-lg-4 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>ThyroSense</h1>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+
+  <div class="container">
+    <header
+      class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <img src="{% static '/img/thyro-white.png' %}" height="40" width="200">
+      </a>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="#about" class="nav-link px-2 link-light">About</a></li>
+        <li><a href="#features" class="nav-link px-2 link-light">Features</a></li>
+        <li><a href="#testimonials" class="nav-link px-2 link-light">Testimonials</a></li>
+        <li><a href="#faq" class="nav-link px-2 link-light">FAQs</a></li>
+      </ul>
+
+      <div class="col-md-2">
+        {% if user.is_authenticated %}
+        <button type="button" class="btn btn-outline-primary me-2"
+          onclick="window.location.href=`{% url 'logout_page' %}`;">
+          Logout
+        </button>
+        {% else %}
+        <button type="button" class="btn btn-outline-info me-2"
+          onclick="window.location.href=`{% url 'login_page' %}`;">Login</button>
+        <button type="button" class="btn btn-info"
+          onclick="window.location.href=`{% url 'signup_page' %}`;">Sign-up</button>
+        {% endif%}
+      </div>
+    </header>
+  </div>
+
+  <section class="container" id="home">
+
+    <div class="bg-body-tertiary rounded-3 pt-5 pb-5 mt-4 mb-4">
+
+      <div class="text-center">
+
+        <img src="{% static '/img/thyrosense.png' %}" height="200" width="200">
+
+        <h2 class="display-2 fw-semibold"><span style="color: #5CE1E6">Thyro</span><span
+            style="color: white;">Sense</span></h2>
+
+        <h5 class="mt-4 text-white">Don't Wait for Symptoms: Check Your Thyroid Health with ThyroSense</h5>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="example-divider"></div>
+
+  <section class="container col-xxl-8 px-4 py-5" id="about">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static '/img/thyro.png' %}" class="d-block mx-lg-auto img-fluid" width="700"
+          height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h4 class="display-5 fw-semibold text-body-emphasis lh-1 mb-3">About Us</h4>
+        <p class="lead">ThyroSense is an innovative platform that empowers individuals to take control of their thyroid
+          health. Using a combination of machine learning algorithms and medical expertise, ThyroSense predicts the risk
+          of developing thyroid issues based on the user's personal information and health history.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+          <a href="{% url 'user_dashboard' %}" type="button" class="btn btn-info btn-lg px-4 me-md-2">Get there</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="example-divider"></div>
+
+  <section class="container mt-4 mb-4 pb-4 pt-4" id="features">
+    <div class="text-center">
+      <h4 class="display-5 fw-semibold text-body-emphasis">Features</h4>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div
+          class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="{% static '/img/doctor.png' %}" class="bd-placeholder-img rounded-circle" width="65" height="65"
+            alt="">
+
+        </div>
+        <h5 class="fs-4 text-white">Doctor Integration</h5>
+        <p>ThyroSense integrates with the user's health reports information allowing
+          doctors to facilitate informed decision-making and personalized treatment plans providing
+          a seamless healthcare experience.</p>
+        <a href="#" class="icon-link">
+          Call to action
+          <svg class="bi">
+            <use xlink:href="#chevron-right" />
+          </svg>
+        </a>
+      </div>
+      <div class="feature col">
+        <div
+          class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="{% static '/img/prediction.png' %}" class="bd-placeholder-img rounded-circle" width="65" height="65"
+            alt="">
+
+        </div>
+        <h5 class="fs-4 text-white">Early Prediction</h5>
+        <p>Using machine learning algorithms and medical expertise, ThyroSense predicts the risk of developing thyroid
+          issues based on the user's personal information and health history, allowing for early detection and
+          prevention.</p>
+        <a href="#" class="icon-link">
+          Call to action
+          <svg class="bi">
+            <use xlink:href="#chevron-right" />
+          </svg>
+        </a>
+      </div>
+      <div class="feature col">
+        <div
+          class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="{% static '/img/community.png' %}" class="bd-placeholder-img rounded-circle" width="65" height="65"
+            alt="">
+        </div>
+        <h5 class="fs-4 text-white">Community Support</h5>
+        <p>ThyroSense provides a community forum where users can connect with others who are dealing with thyroid
+          issues, share experiences, ask questions, and offer support to one another</p>
+        <a href="#" class="icon-link">
+          Call to action
+          <svg class="bi">
+            <use xlink:href="#chevron-right" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="example-divider"></div>
+
+  <section class="container marketing mt-4 mb-2" id="testimonials">
+
+    <div class="text-center">
+      <h4 class="display-5 fw-semibold text-body-emphasis">Testimonials</h4>
+    </div>
+
+    <div class="row pt-5 pb-3">
+      <div class="col-lg-4">
+        <img src="{% static '/img/test_1.jpeg' %}" class="bd-placeholder-img rounded-circle" width="140" height="140"
+          alt="">
+        <h4 class="fw-semibold text-white mt-3 mb-3 fst-italic">Michael, 42</h4>
+        <p class="fst-italic">The doctor integration feature is fantastic. It has made it so much easier for me to
+          share my health
+          information with my doctor and receive personalized advice and treatment.</p>
+      </div>
+      <div class="col-lg-4">
+        <img src="{% static '/img/test_2.jpg' %}" class="bd-placeholder-img rounded-circle" width="140" height="140"
+          alt="">
+        <h4 class="fw-semibold text-white mt-3 mb-3 fst-italic">Jimothy, 32</h4>
+        <p class="fst-italic">The community forum has been a lifesaver for me. It's so helpful to be able to connect
+          with others who are
+          going through the same thing and share advice and support</p>
+      </div>
+      <div class="col-lg-4">
+        <img src="{% static '/img/test_3.jpg' %}" class="bd-placeholder-img rounded-circle" width="140" height="140"
+          alt="">
+        <h4 class="fw-semibold text-white mt-3 mb-3 fst-italic">Pamela, 29</h4>
+        <p class="fst-italic">ThyroSense has been a game-changer for me. As someone who has struggled with thyroid
+          issues for years, having
+          access to this tool has been incredibly helpful in monitoring my health and catching potential issues early.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="example-divider"></div>
+
+  <section class="container mt-3 mt-3 pb-4" id="faq">
+
+    <div class="text-center mt-4 mb-5">
+      <h4 class="display-5 fw-semibold text-body-emphasis">Frequently Asked Questions</h4>
+    </div>
+
+    <div class="accordion mt-4 pb-4" id="accordionExample">
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            What is ThyroSense and how does it work?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            ThyroSense is a website that uses certain parameters to predict if a person has a thyroid condition or not.
+            It works by analyzing data entered by the user and providing an early prediction.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Can ThyroSense integrate with my doctor or healthcare provider?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Yes, ThyroSense can integrate with your healthcare provider to share relevant health information and provide
+            a more seamless healthcare experience.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            What kind of analytics are available in the ThyroSense dashboard?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            The ThyroSense dashboard provides visual analytics on various parameters related to thyroid conditions, such
+            as TSH levels and thyroid antibodies. It also offers personalized insights and recommendations based on the
+            user's data.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            How accurate are the test results?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Our tests have a high level of accuracy, but it is important to note that they are not a substitute for a
+            medical diagnosis. If you have concerns about your thyroid health, we recommend consulting with your
+            healthcare provider.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            How do I share my results with my doctor?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Our platform integrates with healthcare providers, allowing you to easily share your results with your
+            doctor. You can grant your doctor access to your results through our platform, ensuring a seamless and
+            coordinated healthcare experience.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            How often should I take the test?
+          </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            We recommend taking the test once every six months to monitor your thyroid health. However, if you have any
+            concerns about your thyroid health or experience any symptoms, we recommend consulting with your healthcare
+            provider.
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <div class="example-divider"></div>
+
+  <section class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link px-2 text-body-secondary">About</a></li>
+        <li class="nav-item"><a href="#features" class="nav-link px-2 text-body-secondary">Features</a></li>
+        <li class="nav-item"><a href="#testimonials" class="nav-link px-2 text-body-secondary">Testimonials</a></li>
+        <li class="nav-item"><a href="#faq" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+      </ul>
+      <p class="text-center text-body-secondary">&copy; 2023 ThyroSense, Inc</p>
+    </footer>
+  </section>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+    integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+    integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
     crossorigin="anonymous"></script>
 </body>
 
