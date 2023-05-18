@@ -77,12 +77,3 @@ def add_report(request):
 
     # context = {'report': rep}
     return render(request, 'add_report.html')
-
-
-def sample(request):
-    a = 15
-    b = 8
-    context = {
-        'sum': a+b
-    }
-    return render(request, 'sample.html', context)
