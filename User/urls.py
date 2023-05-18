@@ -7,6 +7,7 @@ urlpatterns = [
     path("report/", views.user_report, name="user_report"),
     # path("doctor-dashboard/", views.doctor_dashboard, name="doctor_dashboard"),
     path("user_profile/", views.user_profile, name="user_profile"),
+    path("sample/", views.sample, name="sample"),
 
 
 ]

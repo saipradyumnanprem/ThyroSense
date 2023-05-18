@@ -54,4 +54,4 @@ def doctor_login(request):
 
 
 def doctor_dashboard(request):
-    return render(request, 'doc-login.html')
+    return render(request, 'doctor_dashboard.html')
